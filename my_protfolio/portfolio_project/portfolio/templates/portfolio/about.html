@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block title %}About Me{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);">
+    <div class="container-lg">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-8 text-center" data-aos="fade-down">
+                <h1 class="page-title text-white">About Me</h1>
+                <p class="lead text-light">Learn more about my journey, education, and passion for marine science</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Content -->
+<section class="section-space">
+    <div class="container-lg">
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-5 mb-4 mb-lg-0" data-aos="fade-right">
+                {% if profile and profile.profile_image %}
+                    <img src="{{ profile.profile_image.url }}" alt="{{ profile.full_name }}" class="img-fluid rounded shadow">
+                {% else %}
+                    <img src="https://via.placeholder.com/500x600?text=About+Me" alt="About" class="img-fluid rounded shadow">
+                {% endif %}
+            </div>
+            <div class="col-lg-7" data-aos="fade-left">
+                <h2 class="section-title mb-4">Who Am I?</h2>
+                <p class="mb-3 text-muted" style="font-size: 1.1rem; line-height: 1.8;">
+                    {% if profile %}{{ profile.bio_long }}{% else %}I am a dedicated Fisheries & Marine Science and Engineering student with a strong passion for sustainable ocean management and innovative marine technologies. With a background in both theoretical knowledge and practical field experience, I'm committed to developing solutions that protect marine ecosystems while meeting human needs.{% endif %}
+                </p>
+                <div class="row mt-4">
+                    <div class="col-sm-6 mb-3">
+                        <div class="about-stat">
+                            <h4 class="stat-number gradient-text">{{ profile.projects_count|default:"15+" }}</h4>
+                            <p class="stat-label">Projects Completed</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="about-stat">
+                            <h4 class="stat-number gradient-text">{{ profile.research_count|default:"3+" }}</h4>
+                            <p class="stat-label">Research Papers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Education Timeline -->
+<section class="section-space bg-light">
+    <div class="container-lg">
+        <div class="section-header text-center mb-5">
+            <h2 class="section-title mb-3">Education & Qualifications</h2>
+            <p class="section-subtitle">My academic journey and achievements</p>
+        </div>
+
+        {% if education %}
+            <div class="timeline">
+                {% for edu in education %}
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3 class="timeline-title">{{ edu.degree }}</h3>
+                                <span class="timeline-date">
+                                    {{ edu.start_date|date:"Y" }}
+                                    {% if edu.end_date %}
+                                        - {{ edu.end_date|date:"Y" }}
+                                    {% else %}
+                                        - Present
+                                    {% endif %}
+                                </span>
+                            </div>
+                            <p class="timeline-institution">
+                                <i class="fas fa-university"></i> {{ edu.institution }}
+                            </p>
+                            <p class="text-muted">
+                                <strong>Field of Study:</strong> {{ edu.field_of_study }}
+                            </p>
+                            {% if edu.cgpa %}
+                                <p class="text-muted">
+                                    <strong>CGPA:</strong> {{ edu.cgpa }}/4.0
+                                </p>
+                            {% endif %}
+                            {% if edu.description %}
+                                <p class="text-muted mt-2">{{ edu.description }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-info text-center">
+                <i class="fas fa-info-circle"></i> No education information added yet.
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Career Goals & Interests -->
+<section class="section-space">
+    <div class="container-lg">
+        <div class="section-header text-center mb-5">
+            <h2 class="section-title mb-3">Career Goals & Interests</h2>
+            <p class="section-subtitle">What drives my passion and future aspirations</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4" data-aos="fade-up">
+                <div class="interest-card">
+                    <div class="interest-icon">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <h3>Sustainable Fisheries</h3>
+                    <p class="text-muted">Developing sustainable fishing practices and management strategies to ensure long-term food security and ecosystem health.</p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="interest-card">
+                    <div class="interest-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>Ocean Conservation</h3>
+                    <p class="text-muted">Protecting marine biodiversity and combating climate change impacts on ocean ecosystems through innovative solutions.</p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="interest-card">
+                    <div class="interest-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Marine Technology</h3>
+                    <p class="text-muted">Advancing autonomous systems and IoT technologies for ocean monitoring, research, and resource management.</p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="interest-card">
+                    <div class="interest-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Data-Driven Solutions</h3>
+                    <p class="text-muted">Using big data analytics and machine learning to unlock insights for better ocean and fisheries management.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
