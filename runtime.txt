@@ -1,2 +1,2 @@
 # Runtime configuration for Render
-python-3.11.5
+python-3.11.9
