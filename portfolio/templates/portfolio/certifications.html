@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %}Certifications{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);">
+    <div class="container-lg">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-8 text-center" data-aos="fade-down">
+                <h1 class="page-title text-white">Certifications & Credentials</h1>
+                <p class="lead text-light">Professional certifications and credentials</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Certifications Section -->
+<section class="section-space">
+    <div class="container-lg">
+        {% if certifications %}
+            <div class="row">
+                {% for cert in certifications %}
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                        <div class="certification-card">
+                            {% if cert.image %}
+                                <div class="cert-image-container">
+                                    <img src="{{ cert.image.url }}" alt="{{ cert.name }}" class="cert-image">
+                                </div>
+                            {% else %}
+                                <div class="cert-icon-container">
+                                    <i class="fas fa-certificate fa-3x"></i>
+                                </div>
+                            {% endif %}
+                            
+                            <div class="cert-content">
+                                <h4 class="cert-name">{{ cert.name }}</h4>
+                                <p class="cert-issuer text-muted">
+                                    <i class="fas fa-building"></i> {{ cert.issuer }}
+                                </p>
+                                
+                                <div class="cert-dates mb-3">
+                                    <small class="text-muted">
+                                        <i class="far fa-calendar"></i>
+                                        Issued: {{ cert.issue_date|date:"M Y" }}
+                                        {% if cert.expiry_date %}
+                                            <br>Expires: {{ cert.expiry_date|date:"M Y" }}
+                                        {% else %}
+                                            <br><span class="badge bg-success">No Expiry</span>
+                                        {% endif %}
+                                    </small>
+                                </div>
+
+                                {% if cert.credential_id %}
+                                    <p class="text-muted small">
+                                        <strong>Credential ID:</strong> {{ cert.credential_id }}
+                                    </p>
+                                {% endif %}
+
+                                {% if cert.credential_url %}
+                                    <a href="{{ cert.credential_url }}" class="btn btn-sm btn-primary w-100" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> View Credential
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-info text-center py-5">
+                <i class="fas fa-info-circle fa-2x mb-3"></i>
+                <p class="lead">No certifications added yet. Check back soon!</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Badges Section -->
+<section class="section-space bg-light">
+    <div class="container-lg">
+        <div class="section-header text-center mb-5">
+            <h2 class="section-title mb-3">Professional Badges</h2>
+            <p class="section-subtitle">Additional certifications and recognitions</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-4" data-aos="zoom-in">
+                <div class="badge-card">
+                    <div class="badge-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h5>Excellence in Academics</h5>
+                    <p class="text-muted">Recognized for outstanding academic performance</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
+                <div class="badge-card">
+                    <div class="badge-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h5>Research Excellence</h5>
+                    <p class="text-muted">Contributed to significant research projects</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="badge-card">
+                    <div class="badge-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h5>Technical Skills</h5>
+                    <p class="text-muted">Proficient in multiple programming languages</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,222 @@
+{% extends 'base.html' %}
+
+{% block title %}Skills{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);">
+    <div class="container-lg">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-8 text-center" data-aos="fade-down">
+                <h1 class="page-title text-white">My Skills</h1>
+                <p class="lead text-light">Technical expertise and professional competencies</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section class="section-space">
+    <div class="container-lg">
+        <!-- Programming Languages -->
+        {% if programming_skills %}
+            <div class="skills-category mb-5" data-aos="fade-up">
+                <h2 class="section-subtitle mb-4">
+                    <i class="fas fa-code"></i> Programming Languages
+                </h2>
+                <div class="row">
+                    {% for skill in programming_skills %}
+                        <div class="col-lg-6 mb-4">
+                            <div class="skill-progress">
+                                <div class="skill-header mb-2">
+                                    <span class="skill-name">
+                                        {% if skill.icon %}
+                                            <i class="fas fa-{{ skill.icon }}"></i>
+                                        {% else %}
+                                            <i class="fas fa-code"></i>
+                                        {% endif %}
+                                        {{ skill.name }}
+                                    </span>
+                                    <span class="skill-percentage">{{ skill.proficiency }}%</span>
+                                </div>
+                                <div class="progress" role="progressbar">
+                                    <div class="progress-bar" style="width: {{ skill.proficiency }}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Frameworks & Tools -->
+        {% if framework_skills %}
+            <div class="skills-category mb-5" data-aos="fade-up">
+                <h2 class="section-subtitle mb-4">
+                    <i class="fas fa-tools"></i> Frameworks & Tools
+                </h2>
+                <div class="row">
+                    {% for skill in framework_skills %}
+                        <div class="col-lg-6 mb-4">
+                            <div class="skill-progress">
+                                <div class="skill-header mb-2">
+                                    <span class="skill-name">
+                                        {% if skill.icon %}
+                                            <i class="fas fa-{{ skill.icon }}"></i>
+                                        {% else %}
+                                            <i class="fas fa-tools"></i>
+                                        {% endif %}
+                                        {{ skill.name }}
+                                    </span>
+                                    <span class="skill-percentage">{{ skill.proficiency }}%</span>
+                                </div>
+                                <div class="progress" role="progressbar">
+                                    <div class="progress-bar" style="width: {{ skill.proficiency }}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Data Analysis & Visualization -->
+        {% if data_skills %}
+            <div class="skills-category mb-5" data-aos="fade-up">
+                <h2 class="section-subtitle mb-4">
+                    <i class="fas fa-chart-bar"></i> Data Analysis & Visualization
+                </h2>
+                <div class="row">
+                    {% for skill in data_skills %}
+                        <div class="col-lg-6 mb-4">
+                            <div class="skill-progress">
+                                <div class="skill-header mb-2">
+                                    <span class="skill-name">
+                                        {% if skill.icon %}
+                                            <i class="fas fa-{{ skill.icon }}"></i>
+                                        {% else %}
+                                            <i class="fas fa-chart-bar"></i>
+                                        {% endif %}
+                                        {{ skill.name }}
+                                    </span>
+                                    <span class="skill-percentage">{{ skill.proficiency }}%</span>
+                                </div>
+                                <div class="progress" role="progressbar">
+                                    <div class="progress-bar" style="width: {{ skill.proficiency }}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Engineering Tools -->
+        {% if engineering_skills %}
+            <div class="skills-category mb-5" data-aos="fade-up">
+                <h2 class="section-subtitle mb-4">
+                    <i class="fas fa-drafting-compass"></i> Engineering Tools
+                </h2>
+                <div class="row">
+                    {% for skill in engineering_skills %}
+                        <div class="col-lg-6 mb-4">
+                            <div class="skill-progress">
+                                <div class="skill-header mb-2">
+                                    <span class="skill-name">
+                                        {% if skill.icon %}
+                                            <i class="fas fa-{{ skill.icon }}"></i>
+                                        {% else %}
+                                            <i class="fas fa-drafting-compass"></i>
+                                        {% endif %}
+                                        {{ skill.name }}
+                                    </span>
+                                    <span class="skill-percentage">{{ skill.proficiency }}%</span>
+                                </div>
+                                <div class="progress" role="progressbar">
+                                    <div class="progress-bar" style="width: {{ skill.proficiency }}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Soft Skills -->
+        {% if soft_skills %}
+            <div class="skills-category mb-5" data-aos="fade-up">
+                <h2 class="section-subtitle mb-4">
+                    <i class="fas fa-handshake"></i> Soft Skills
+                </h2>
+                <div class="row">
+                    {% for skill in soft_skills %}
+                        <div class="col-lg-6 mb-4">
+                            <div class="skill-progress">
+                                <div class="skill-header mb-2">
+                                    <span class="skill-name">
+                                        {% if skill.icon %}
+                                            <i class="fas fa-{{ skill.icon }}"></i>
+                                        {% else %}
+                                            <i class="fas fa-handshake"></i>
+                                        {% endif %}
+                                        {{ skill.name }}
+                                    </span>
+                                    <span class="skill-percentage">{{ skill.proficiency }}%</span>
+                                </div>
+                                <div class="progress" role="progressbar">
+                                    <div class="progress-bar" style="width: {{ skill.proficiency }}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if not programming_skills and not framework_skills and not data_skills and not engineering_skills and not soft_skills %}
+            <div class="alert alert-info text-center">
+                <i class="fas fa-info-circle"></i> No skills added yet. Check back soon!
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Skills Overview Cards -->
+<section class="section-space bg-light">
+    <div class="container-lg">
+        <div class="section-header text-center mb-5">
+            <h2 class="section-title mb-3">Areas of Expertise</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4" data-aos="flip-left">
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Research & Analysis</h3>
+                    <p>Proficient in conducting scientific research, data collection, statistical analysis, and presenting findings in academic publications.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="100">
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Technical Development</h3>
+                    <p>Experienced in full-stack web development, software design, database management, and deployment on cloud platforms.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="200">
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Project Management</h3>
+                    <p>Skilled in planning, organizing, and executing projects on time, managing teams, and delivering results that exceed expectations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

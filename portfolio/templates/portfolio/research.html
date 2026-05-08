@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+
+{% block title %}Research & Publications{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);">
+    <div class="container-lg">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-8 text-center" data-aos="fade-down">
+                <h1 class="page-title text-white">Research & Publications</h1>
+                <p class="lead text-light">My research interests, publications, and academic contributions</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Research Content -->
+<section class="section-space">
+    <div class="container-lg">
+        <!-- Research Topics -->
+        {% if research_topics %}
+            <div class="mb-5" data-aos="fade-up">
+                <div class="section-header mb-4">
+                    <h2 class="section-title">
+                        <i class="fas fa-microscope"></i> Research Topics
+                    </h2>
+                </div>
+                <div class="row">
+                    {% for item in research_topics %}
+                        <div class="col-lg-6 mb-4">
+                            <div class="research-card">
+                                {% if item.image %}
+                                    <img src="{{ item.image.url }}" alt="{{ item.title }}" class="research-image">
+                                {% else %}
+                                    <div class="research-image-placeholder">
+                                        <i class="fas fa-microscope"></i>
+                                    </div>
+                                {% endif %}
+                                <div class="research-content">
+                                    <h4 class="mb-2">{{ item.title }}</h4>
+                                    <p class="text-muted mb-3">{{ item.description|truncatewords:30 }}</p>
+                                    {% if item.url %}
+                                        <a href="{{ item.url }}" class="btn btn-sm btn-primary" target="_blank">
+                                            <i class="fas fa-link"></i> Learn More
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Publications -->
+        {% if publications %}
+            <div class="mb-5 py-5 border-top" data-aos="fade-up">
+                <div class="section-header mb-4">
+                    <h2 class="section-title">
+                        <i class="fas fa-book"></i> Publications
+                    </h2>
+                </div>
+                <div class="row">
+                    {% for pub in publications %}
+                        <div class="col-lg-12 mb-4">
+                            <div class="publication-card">
+                                <div class="publication-icon">
+                                    <i class="fas fa-journal-whills"></i>
+                                </div>
+                                <div class="publication-content">
+                                    <h4 class="publication-title">{{ pub.title }}</h4>
+                                    {% if pub.authors %}
+                                        <p class="publication-authors">
+                                            <strong>Authors:</strong> {{ pub.authors }}
+                                        </p>
+                                    {% endif %}
+                                    {% if pub.journal_name %}
+                                        <p class="publication-journal">
+                                            <i class="fas fa-newspaper"></i> {{ pub.journal_name }}
+                                        </p>
+                                    {% endif %}
+                                    {% if pub.publication_date %}
+                                        <p class="publication-date">
+                                            <i class="far fa-calendar"></i> {{ pub.publication_date|date:"F Y" }}
+                                        </p>
+                                    {% endif %}
+                                    {% if pub.description %}
+                                        <p class="text-muted">{{ pub.description }}</p>
+                                    {% endif %}
+                                    {% if pub.url %}
+                                        <a href="{{ pub.url }}" class="btn btn-sm btn-primary" target="_blank">
+                                            <i class="fas fa-external-link-alt"></i> Read Publication
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Conference Presentations -->
+        {% if conferences %}
+            <div class="mb-5 py-5 border-top" data-aos="fade-up">
+                <div class="section-header mb-4">
+                    <h2 class="section-title">
+                        <i class="fas fa-presentation"></i> Conference Presentations
+                    </h2>
+                </div>
+                <div class="row">
+                    {% for conf in conferences %}
+                        <div class="col-lg-6 mb-4">
+                            <div class="conference-card">
+                                <div class="conference-icon">
+                                    <i class="fas fa-microphone"></i>
+                                </div>
+                                <h4 class="conference-title">{{ conf.title }}</h4>
+                                {% if conf.authors %}
+                                    <p class="text-muted small">
+                                        <strong>Presented by:</strong> {{ conf.authors }}
+                                    </p>
+                                {% endif %}
+                                {% if conf.publication_date %}
+                                    <p class="text-muted small">
+                                        <i class="far fa-calendar"></i> {{ conf.publication_date|date:"F d, Y" }}
+                                    </p>
+                                {% endif %}
+                                <p class="text-muted">{{ conf.description|truncatewords:20 }}</p>
+                                {% if conf.url %}
+                                    <a href="{{ conf.url }}" class="btn btn-sm btn-outline-primary" target="_blank">
+                                        More Info
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Fieldwork Gallery -->
+        {% if fieldwork %}
+            <div class="py-5 border-top" data-aos="fade-up">
+                <div class="section-header mb-4">
+                    <h2 class="section-title">
+                        <i class="fas fa-image"></i> Fieldwork Gallery
+                    </h2>
+                </div>
+                <div class="row">
+                    {% for item in fieldwork %}
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="fieldwork-item">
+                                {% if item.image %}
+                                    <img src="{{ item.image.url }}" alt="{{ item.title }}" class="fieldwork-image">
+                                {% else %}
+                                    <div class="fieldwork-image-placeholder">
+                                        <i class="fas fa-camera"></i>
+                                    </div>
+                                {% endif %}
+                                <div class="fieldwork-overlay">
+                                    <h5>{{ item.title }}</h5>
+                                    {% if item.publication_date %}
+                                        <p class="small">{{ item.publication_date|date:"F Y" }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if not research_topics and not publications and not conferences and not fieldwork %}
+            <div class="alert alert-info text-center py-5">
+                <i class="fas fa-info-circle fa-2x mb-3"></i>
+                <p class="lead">No research items added yet. Check back soon!</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

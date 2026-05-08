@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section" id="hero">
+    <div class="container-lg h-100">
+        <div class="row h-100 align-items-center justify-content-center">
+            <div class="col-lg-6 text-center text-lg-start mb-4 mb-lg-0" data-aos="fade-up">
+                <div class="hero-content">
+                    <h1 class="display-4 fw-bold gradient-text mb-3">
+                        Hi, I'm <span id="name-text">{% if profile %}{{ profile.full_name }}{% else %}Your Name{% endif %}</span>
+                    </h1>
+                    <p class="lead text-light mb-3">
+                        <span id="typing-text">{% if profile %}{{ profile.tagline }}{% endif %}</span>
+                    </p>
+                    <p class="text-light mb-4" style="font-size: 1.1rem; line-height: 1.8;">
+                        {% if profile %}{{ profile.bio_short }}{% else %}A passionate Fisheries & Marine Science and Engineering student dedicated to developing innovative solutions for sustainable ocean management and environmental conservation.{% endif %}
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="{% url 'portfolio:contact' %}" class="btn btn-lg btn-primary me-3 mb-2">
+                            <i class="fas fa-envelope"></i> Hire Me
+                        </a>
+                        <a href="{% url 'portfolio:download_cv' %}" class="btn btn-lg btn-outline-light mb-2">
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center" data-aos="fade-left">
+                <div class="hero-image">
+                    <div class="image-container">
+                        {% if profile and profile.profile_image %}
+                            <img src="{{ profile.profile_image.url }}" alt="{{ profile.full_name }}" class="img-fluid rounded-circle shadow">
+                        {% else %}
+                            <img src="https://via.placeholder.com/400x400?text=Profile+Image" alt="Profile" class="img-fluid rounded-circle shadow">
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <span></span>
+    </div>
+</section>
+
+<!-- Featured Projects Preview -->
+<section class="section-space bg-light">
+    <div class="container-lg">
+        <div class="section-header text-center mb-5">
+            <h2 class="section-title mb-3">Featured Projects</h2>
+            <p class="section-subtitle">Explore some of my recent work and achievements</p>
+        </div>
+        
+        {% if featured_projects %}
+            <div class="row">
+                {% for project in featured_projects %}
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                        <div class="project-card h-100">
+                            {% if project.image %}
+                                <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-image">
+                            {% else %}
+                                <div class="project-image-placeholder">
+                                    <i class="fas fa-project-diagram"></i>
+                                </div>
+                            {% endif %}
+                            <div class="project-content">
+                                <h3 class="project-title">{{ project.title }}</h3>
+                                <p class="project-description">{{ project.description|truncatewords:15 }}</p>
+                                <div class="project-tech mb-3">
+                                    {% for tech in project.technologies|split:"," %}
+                                        <span class="badge bg-primary">{{ tech|safe }}</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="project-links">
+                                    {% if project.github_link %}
+                                        <a href="{{ project.github_link }}" class="btn btn-sm btn-primary" target="_blank">
+                                            <i class="fab fa-github"></i> GitHub
+                                        </a>
+                                    {% endif %}
+                                    {% if project.live_demo_link %}
+                                        <a href="{{ project.live_demo_link }}" class="btn btn-sm btn-outline-primary" target="_blank">
+                                            <i class="fas fa-external-link-alt"></i> Demo
+                                        </a>
+                                    {% endif %}
+                                    <a href="{% url 'portfolio:project_detail' project.id %}" class="btn btn-sm btn-secondary">
+                                        View More
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="text-center mt-5">
+                <a href="{% url 'portfolio:projects' %}" class="btn btn-lg btn-primary">
+                    View All Projects <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+        {% else %}
+            <div class="alert alert-info text-center">
+                <i class="fas fa-info-circle"></i> No featured projects yet. Check back soon!
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Quick Skills Overview -->
+<section class="section-space">
+    <div class="container-lg">
+        <div class="section-header text-center mb-5">
+            <h2 class="section-title mb-3">Core Competencies</h2>
+            <p class="section-subtitle">Key skills that define my professional expertise</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up">
+                <div class="skill-card text-center">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="skill-name">Web Development</h3>
+                    <p class="text-muted">HTML, CSS, JavaScript, Django</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="skill-card text-center">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="skill-name">Data Analysis</h3>
+                    <p class="text-muted">Python, MATLAB, GIS</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="skill-card text-center">
+                    <div class="skill-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3 class="skill-name">Research</h3>
+                    <p class="text-muted">Marine Science, Fisheries</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="skill-card text-center">
+                    <div class="skill-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="skill-name">Engineering</h3>
+                    <p class="text-muted">AutoCAD, 3D Design, CAD</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-5">
+            <a href="{% url 'portfolio:skills' %}" class="btn btn-lg btn-outline-primary">
+                Explore All Skills <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section" data-aos="zoom-in">
+    <div class="container-lg">
+        <div class="cta-content text-center">
+            <h2 class="mb-4">Ready to Work Together?</h2>
+            <p class="lead mb-4">Let's collaborate to create something amazing. Get in touch with me today!</p>
+            <div class="cta-buttons">
+                <a href="{% url 'portfolio:contact' %}" class="btn btn-lg btn-light me-3">
+                    <i class="fas fa-envelope"></i> Contact Me
+                </a>
+                <a href="https://github.com" class="btn btn-lg btn-outline-light" target="_blank">
+                    <i class="fab fa-github"></i> Visit GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Typing animation with dynamic strings from profile
+        var animationStrings = [
+            {% if profile and profile.animation_strings %}
+                {% for string in profile.animation_strings|split:'|' %}
+                    '{{ string|safe }}',
+                {% endfor %}
+            {% else %}
+                'Fisheries & Marine Science Enthusiast',
+                'Engineering Solutions Developer',
+                'Ocean Conservation Advocate',
+                'Data Analysis Specialist',
+                'Passionate About Sustainable Fisheries'
+            {% endif %}
+        ];
+        
+        var typed = new Typed('#typing-text', {
+            strings: animationStrings,
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
+            loop: true
+        });
+    });
+</script>
+{% endblock %}

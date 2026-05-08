@@ -1,0 +1,24 @@
+# Render.com Deployment Configuration
+
+# Build command
+build_command = "pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput"
+
+# Start command
+start_command = "gunicorn portfolio_config.wsgi:application --bind 0.0.0.0:$PORT"
+
+# Environment variables to set:
+# - SECRET_KEY: Generate a new secure key
+# - DEBUG: false
+# - ALLOWED_HOSTS: your-domain.render.com
+# - DATABASE_URL: (if using PostgreSQL on Render)
+
+# Steps:
+# 1. Push code to GitHub
+# 2. Go to render.com and click "New +"
+# 3. Select "Web Service"
+# 4. Connect your GitHub repository
+# 5. Choose "Python" as runtime
+# 6. Set the build command above
+# 7. Set the start command above
+# 8. Add environment variables
+# 9. Click "Create Web Service"
