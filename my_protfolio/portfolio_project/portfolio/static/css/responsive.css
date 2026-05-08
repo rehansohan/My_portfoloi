@@ -1,0 +1,576 @@
+/* =================================================================================
+   RESPONSIVE DESIGN - MOBILE, TABLET, AND SCREEN ADJUSTMENTS
+================================================================================= */
+
+/* ===== TABLET DEVICES (768px - 1024px) ===== */
+@media (max-width: 1024px) {
+    .section-space {
+        padding: 60px 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .page-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section .lead {
+        font-size: 1.1rem;
+    }
+
+    .image-container {
+        width: 250px;
+        height: 250px;
+    }
+
+    .container-lg {
+        padding: 0 20px;
+    }
+}
+
+/* ===== MOBILE DEVICES (576px - 768px) ===== */
+@media (max-width: 768px) {
+    :root {
+        font-size: 15px;
+    }
+
+    .section-space {
+        padding: 40px 0;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .section-title::after {
+        width: 50px;
+    }
+
+    .page-header {
+        min-height: 200px;
+    }
+
+    .page-title {
+        font-size: 1.8rem;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero-section {
+        padding: 40px 0;
+    }
+
+    .hero-section h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-section .lead {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .image-container {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .nav-link {
+        margin: 0.3rem 0;
+    }
+
+    .nav-link.active::after {
+        display: none;
+    }
+
+    .nav-link.active {
+        color: var(--cyan) !important;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+
+    .btn-lg {
+        padding: 0.7rem 1.4rem;
+    }
+
+    /* ===== PROJECT CARDS ===== */
+    .project-card {
+        margin-bottom: 1rem;
+    }
+
+    .project-image {
+        height: 180px;
+    }
+
+    .project-links {
+        flex-direction: column;
+    }
+
+    .project-links .btn {
+        width: 100%;
+    }
+
+    /* ===== SKILL CARDS ===== */
+    .skill-card {
+        padding: 1.5rem;
+    }
+
+    .skill-icon {
+        font-size: 2rem;
+    }
+
+    /* ===== CONTACT FORM ===== */
+    .contact-form-section {
+        padding: 1.5rem;
+    }
+
+    .contact-info-section {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+        padding: 40px 20px;
+    }
+
+    .footer .row {
+        text-align: center;
+    }
+
+    .footer h5 {
+        margin-top: 1.5rem;
+    }
+
+    .footer h5:first-child {
+        margin-top: 0;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    /* ===== BACK TO TOP ===== */
+    #backToTop {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+
+    /* ===== CTA SECTION ===== */
+    .cta-section {
+        margin: 40px 0;
+        padding: 40px 20px;
+    }
+
+    .cta-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .cta-buttons .btn {
+        width: 100%;
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline {
+        padding-left: 30px;
+    }
+
+    .timeline-marker {
+        left: -35px;
+        width: 16px;
+        height: 16px;
+    }
+
+    .timeline-item:not(:last-child)::before {
+        left: -28px;
+    }
+
+    /* ===== RESEARCH CARDS ===== */
+    .research-card {
+        margin-bottom: 1rem;
+    }
+
+    /* ===== PUBLICATION CARD ===== */
+    .publication-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .publication-icon {
+        margin: 0 auto 1rem;
+    }
+
+    .publication-content {
+        text-align: center;
+    }
+
+    /* ===== CERTIFICATION CARDS ===== */
+    .certification-card {
+        margin-bottom: 1rem;
+    }
+
+    /* ===== FIELDWORK ITEM ===== */
+    .fieldwork-item {
+        height: 250px;
+    }
+
+    /* ===== INFO CARD ===== */
+    .info-card {
+        margin-top: 1rem;
+        position: static !important;
+    }
+
+    /* ===== ABOUT STATS ===== */
+    .about-stat {
+        margin-bottom: 1rem;
+    }
+
+    /* ===== FORM INPUTS ===== */
+    .form-control {
+        padding: 0.7rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* ===== SECTION HEADER ===== */
+    .section-header {
+        margin-bottom: 2rem;
+    }
+}
+
+/* ===== SMALL MOBILE (Below 576px) ===== */
+@media (max-width: 576px) {
+    :root {
+        font-size: 14px;
+    }
+
+    .container-lg {
+        padding: 0 15px;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    /* ===== PAGE TITLE ===== */
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero-section {
+        min-height: auto;
+        padding: 40px 15px;
+    }
+
+    .hero-section h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-section .lead {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+
+    .image-container {
+        width: 180px;
+        height: 180px;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+        padding: 0.75rem 0;
+    }
+
+    .navbar-brand {
+        font-size: 1rem;
+    }
+
+    /* ===== SKILL PROGRESS ===== */
+    .skill-progress {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .skill-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* ===== CONTACT FORM ===== */
+    .contact-form-section,
+    .contact-info-section {
+        padding: 1.25rem;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+        padding: 30px 15px;
+    }
+
+    .footer h5 {
+        font-size: 1rem;
+    }
+
+    /* ===== SECTION SPACE ===== */
+    .section-space {
+        padding: 30px 0;
+    }
+
+    /* ===== INTEREST CARDS ===== */
+    .interest-card {
+        padding: 1.5rem;
+    }
+
+    /* ===== CTA SECTION ===== */
+    .cta-section {
+        padding: 30px 15px;
+        margin: 30px 0;
+    }
+
+    .cta-section h2 {
+        font-size: 1.3rem;
+    }
+
+    /* ===== PROJECT CARDS ===== */
+    .project-links {
+        gap: 0.25rem;
+    }
+
+    .project-links .btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+
+    /* ===== CONTACT INFO ===== */
+    .contact-info-item {
+        gap: 0.75rem;
+    }
+
+    .contact-icon {
+        font-size: 1.5rem;
+    }
+
+    /* ===== SOCIAL LINKS ===== */
+    .social-link-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    /* ===== BACK TO TOP ===== */
+    #backToTop {
+        bottom: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    /* ===== EXPERTISE CARD ===== */
+    .expertise-card {
+        padding: 1.5rem;
+    }
+
+    .expertise-icon {
+        font-size: 2rem;
+    }
+
+    /* ===== BADGE CARD ===== */
+    .badge-card {
+        padding: 1.5rem;
+    }
+
+    .badge-icon {
+        font-size: 2rem;
+    }
+
+    /* ===== CONFERENCE CARD ===== */
+    .conference-card {
+        padding: 1.25rem;
+    }
+
+    .conference-icon {
+        font-size: 1.5rem;
+    }
+
+    /* ===== CERTIFICATION CARD ===== */
+    .cert-icon-container,
+    .cert-image-container {
+        height: 150px;
+    }
+
+    /* ===== FIELDWORK ITEM ===== */
+    .fieldwork-item {
+        height: 200px;
+    }
+
+    /* ===== RESEARCH IMAGES ===== */
+    .research-image,
+    .research-image-placeholder {
+        height: 150px;
+    }
+
+    /* ===== PUBLICATION CARD ===== */
+    .publication-card {
+        padding: 1rem;
+    }
+
+    .publication-icon {
+        font-size: 1.5rem;
+    }
+
+    /* ===== RELATED PROJECT CARD ===== */
+    .related-project-card {
+        padding: 0.75rem;
+    }
+
+    .related-image-placeholder {
+        height: 120px;
+    }
+
+    /* ===== FORM CONTROL ===== */
+    .form-control {
+        padding: 0.6rem 0.9rem;
+        font-size: 0.85rem;
+    }
+
+    /* ===== HERO BUTTONS ===== */
+    .hero-buttons {
+        gap: 0.5rem;
+    }
+}
+
+/* ===== EXTRA SMALL MOBILE (Below 360px) ===== */
+@media (max-width: 360px) {
+    .page-title {
+        font-size: 1.2rem;
+    }
+
+    .hero-section h1 {
+        font-size: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+    }
+
+    .image-container {
+        width: 150px;
+        height: 150px;
+    }
+
+    .btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+
+    .footer h5 {
+        font-size: 0.9rem;
+    }
+
+    /* Ensure text wraps properly */
+    .hero-section .lead {
+        font-size: 0.9rem;
+    }
+}
+
+/* ===== LANDSCAPE MODE ===== */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero-section {
+        min-height: auto;
+        padding: 20px 0;
+    }
+
+    .hero-section h1 {
+        font-size: 1.5rem;
+    }
+
+    .image-container {
+        width: 180px;
+        height: 180px;
+    }
+
+    .page-header {
+        min-height: 150px;
+    }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    .navbar,
+    #backToTop,
+    .footer,
+    .cta-section,
+    .hero-buttons,
+    form,
+    .social-links {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+    }
+
+    .section-space {
+        padding: 20px 0;
+    }
+
+    .project-card,
+    .skill-card {
+        page-break-inside: avoid;
+    }
+}
+
+/* ===== HIGH DPI SCREENS ===== */
+@media (-webkit-min-device-pixel-ratio: 2),
+       (min-resolution: 192dpi) {
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
