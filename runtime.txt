@@ -1,2 +1,1 @@
-# Runtime configuration for Render
 python-3.11.9
